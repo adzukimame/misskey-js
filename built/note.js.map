@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/note.ts"],
+  "sourcesContent": ["import type { Note, PureRenote } from './entities.js';\n\nexport function isPureRenote(note: Note): note is PureRenote {\n\treturn (\n\t\tnote.renote != null &&\n\t\tnote.reply == null &&\n\t\tnote.text == null &&\n\t\tnote.cw == null &&\n\t\t(note.fileIds == null || note.fileIds.length === 0) &&\n\t\tnote.poll == null\n\t);\n}\n"],
+  "mappings": "AAEO,SAAS,aAAa,MAAgC;AAC5D,SACC,KAAK,UAAU,QACf,KAAK,SAAS,QACd,KAAK,QAAQ,QACb,KAAK,MAAM,SACV,KAAK,WAAW,QAAQ,KAAK,QAAQ,WAAW,MACjD,KAAK,QAAQ;AAEf;",
+  "names": []
+}

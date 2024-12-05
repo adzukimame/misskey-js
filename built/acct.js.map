@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/acct.ts"],
+  "sourcesContent": ["export type Acct = {\n\tusername: string;\n\thost: string | null;\n};\n\nexport function parse(_acct: string): Acct {\n\tlet acct = _acct;\n\tif (acct.startsWith('@')) acct = acct.substring(1);\n\tconst split = acct.split('@', 2);\n\treturn { username: split[0], host: split[1] || null };\n}\n\nexport function toString(acct: Acct): string {\n\treturn acct.host == null ? acct.username : `${acct.username}@${acct.host}`;\n}\n"],
+  "mappings": "AAKO,SAAS,MAAM,OAAqB;AAC1C,MAAI,OAAO;AACX,MAAI,KAAK,WAAW,GAAG,EAAG,QAAO,KAAK,UAAU,CAAC;AACjD,QAAM,QAAQ,KAAK,MAAM,KAAK,CAAC;AAC/B,SAAO,EAAE,UAAU,MAAM,CAAC,GAAG,MAAM,MAAM,CAAC,KAAK,KAAK;AACrD;AAEO,SAAS,SAAS,MAAoB;AAC5C,SAAO,KAAK,QAAQ,OAAO,KAAK,WAAW,GAAG,KAAK,QAAQ,IAAI,KAAK,IAAI;AACzE;",
+  "names": []
+}

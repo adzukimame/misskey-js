@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts"],
+  "sourcesContent": ["import { type Endpoints } from './api.types.js';\nimport Stream, { Connection } from './streaming.js';\nimport { type Channels } from './streaming.types.js';\nimport { type Acct } from './acct.js';\nimport * as consts from './consts.js';\n\nexport type {\n\tEndpoints,\n\tChannels,\n\tAcct,\n};\n\nexport {\n\tStream,\n\tConnection as ChannelConnection,\n};\n\nexport const permissions = consts.permissions;\nexport const notificationTypes = consts.notificationTypes;\nexport const noteVisibilities = consts.noteVisibilities;\nexport const mutedNoteReasons = consts.mutedNoteReasons;\nexport const followingVisibilities = consts.followingVisibilities;\nexport const followersVisibilities = consts.followersVisibilities;\n\n// api extractor not supported yet\n//export * as api from './api.js';\n//export * as entities from './entities.js';\nimport * as api from './api.js';\nimport * as entities from './entities.js';\nimport * as acct from './acct.js';\nimport * as note from './note.js';\nexport { api, entities, acct, note };\n"],
+  "mappings": "AACA,OAAO,UAAU,kBAAkB;AAGnC,YAAY,YAAY;AAajB,MAAM,cAAc,OAAO;AAC3B,MAAM,oBAAoB,OAAO;AACjC,MAAM,mBAAmB,OAAO;AAChC,MAAM,mBAAmB,OAAO;AAChC,MAAM,wBAAwB,OAAO;AACrC,MAAM,wBAAwB,OAAO;AAK5C,YAAY,SAAS;AACrB,YAAY,cAAc;AAC1B,YAAY,UAAU;AACtB,YAAY,UAAU;",
+  "names": []
+}
