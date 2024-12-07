@@ -16,18 +16,6 @@ export type paths = {
     '/admin/accounts/find-by-email': {
         post: operations['admin___accounts___find-by-email'];
     };
-    '/admin/avatar-decorations/create': {
-        post: operations['admin___avatar-decorations___create'];
-    };
-    '/admin/avatar-decorations/delete': {
-        post: operations['admin___avatar-decorations___delete'];
-    };
-    '/admin/avatar-decorations/list': {
-        post: operations['admin___avatar-decorations___list'];
-    };
-    '/admin/avatar-decorations/update': {
-        post: operations['admin___avatar-decorations___update'];
-    };
     '/admin/delete-all-files-of-a-user': {
         post: operations['admin___delete-all-files-of-a-user'];
     };
@@ -457,9 +445,6 @@ export type paths = {
     '/following/requests/reject': {
         post: operations['following___requests___reject'];
     };
-    '/get-avatar-decorations': {
-        post: operations['get-avatar-decorations'];
-    };
     '/hashtags/list': {
         post: operations['hashtags___list'];
     };
@@ -736,9 +721,6 @@ export type paths = {
     '/notes/timeline': {
         post: operations['notes___timeline'];
     };
-    '/notes/translate': {
-        post: operations['notes___translate'];
-    };
     '/notes/unrenote': {
         post: operations['notes___unrenote'];
     };
@@ -908,14 +890,6 @@ export type components = {
             host: string | null;
             avatarUrl: string | null;
             avatarBlurhash: string | null;
-            avatarDecorations: {
-                id: string;
-                angle?: number;
-                flipH?: boolean;
-                url: string;
-                offsetX?: number;
-                offsetY?: number;
-            }[];
             isBot?: boolean;
             instance?: {
                 name: string | null;
@@ -1600,15 +1574,12 @@ export type components = {
             inviteLimitCycle: number;
             inviteExpirationTime: number;
             canManageCustomEmojis: boolean;
-            canManageAvatarDecorations: boolean;
             canSearchNotes: boolean;
-            canUseTranslator: boolean;
             driveCapacityMb: number;
             alwaysMarkNsfw: boolean;
             canUpdateBioMedia: boolean;
             pinLimit: number;
             rateLimitFactor: number;
-            avatarDecorationLimit: number;
             canMakePureRenoteOfRemoteNotes: boolean;
             canImportAntennas: boolean;
             canImportBlocking: boolean;
@@ -1651,7 +1622,6 @@ export type components = {
             iconUrl: string | null;
             maxNoteTextLength: number;
             enableEmail: boolean;
-            translatorAvailable: boolean;
             mediaProxy: string;
             enableUrlPreview: boolean;
             backgroundImageUrl: string | null;
@@ -1720,7 +1690,6 @@ export type operations = {
                         app192IconUrl: string | null;
                         app512IconUrl: string | null;
                         enableEmail: boolean;
-                        translatorAvailable: boolean;
                         silencedHosts: string[];
                         mediaSilencedHosts: string[];
                         pinnedUsers: string[];
@@ -1775,8 +1744,6 @@ export type operations = {
                         perUserHomeTimelineCacheMax: number;
                         perUserListTimelineCacheMax: number;
                         backgroundImageUrl: string | null;
-                        deeplAuthKey: string | null;
-                        deeplIsPro: boolean;
                         defaultDarkTheme: string | null;
                         defaultLightTheme: string | null;
                         description: string | null;
@@ -1929,182 +1896,6 @@ export type operations = {
                 content: {
                     'application/json': components['schemas']['UserDetailedNotMe'];
                 };
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
-    'admin___avatar-decorations___create': {
-        requestBody: {
-            content: {
-                'application/json': {
-                    name: string;
-                    description: string;
-                    url: string;
-                    roleIdsThatCanBeUsedThisDecoration?: string[];
-                };
-            };
-        };
-        responses: {
-            204: {
-                content: never;
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
-    'admin___avatar-decorations___delete': {
-        requestBody: {
-            content: {
-                'application/json': {
-                    id: string;
-                };
-            };
-        };
-        responses: {
-            204: {
-                content: never;
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
-    'admin___avatar-decorations___list': {
-        requestBody: {
-            content: {
-                'application/json': {
-                    limit?: number;
-                    sinceId?: string;
-                    untilId?: string;
-                    userId?: string | null;
-                };
-            };
-        };
-        responses: {
-            200: {
-                content: {
-                    'application/json': ({
-                        id: string;
-                        createdAt: string;
-                        updatedAt: string | null;
-                        name: string;
-                        description: string;
-                        url: string;
-                        roleIdsThatCanBeUsedThisDecoration: string[];
-                    })[];
-                };
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
-    'admin___avatar-decorations___update': {
-        requestBody: {
-            content: {
-                'application/json': {
-                    id: string;
-                    name?: string;
-                    description?: string;
-                    url?: string;
-                    roleIdsThatCanBeUsedThisDecoration?: string[];
-                };
-            };
-        };
-        responses: {
-            204: {
-                content: never;
             };
             400: {
                 content: {
@@ -4278,8 +4069,6 @@ export type operations = {
                     maintainerName?: string | null;
                     maintainerEmail?: string | null;
                     langs?: string[];
-                    deeplAuthKey?: string | null;
-                    deeplIsPro?: boolean;
                     enableEmail?: boolean;
                     email?: string | null;
                     smtpSecure?: boolean;
@@ -5823,7 +5612,6 @@ export type operations = {
                     untilId?: string;
                     sinceDate?: number;
                     untilDate?: number;
-                    allowPartial?: boolean;
                 };
             };
         };
@@ -8556,46 +8344,6 @@ export type operations = {
             };
         };
     };
-    'get-avatar-decorations': {
-        responses: {
-            200: {
-                content: {
-                    'application/json': {
-                        id: string;
-                        name: string;
-                        description: string;
-                        url: string;
-                        roleIdsThatCanBeUsedThisDecoration: string[];
-                    }[];
-                };
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
     hashtags___list: {
         requestBody: {
             content: {
@@ -10596,13 +10344,6 @@ export type operations = {
                     birthday?: string | null;
                     lang?: null | 'ach' | 'ady' | 'af' | 'af-NA' | 'af-ZA' | 'ak' | 'ar' | 'ar-AR' | 'ar-MA' | 'ar-SA' | 'ay-BO' | 'az' | 'az-AZ' | 'be-BY' | 'bg' | 'bg-BG' | 'bn' | 'bn-IN' | 'bn-BD' | 'br' | 'bs-BA' | 'ca' | 'ca-ES' | 'cak' | 'ck-US' | 'cs' | 'cs-CZ' | 'cy' | 'cy-GB' | 'da' | 'da-DK' | 'de' | 'de-AT' | 'de-DE' | 'de-CH' | 'dsb' | 'el' | 'el-GR' | 'en' | 'en-GB' | 'en-AU' | 'en-CA' | 'en-IE' | 'en-IN' | 'en-PI' | 'en-SG' | 'en-UD' | 'en-US' | 'en-ZA' | 'en@pirate' | 'eo' | 'eo-EO' | 'es' | 'es-AR' | 'es-419' | 'es-CL' | 'es-CO' | 'es-EC' | 'es-ES' | 'es-LA' | 'es-NI' | 'es-MX' | 'es-US' | 'es-VE' | 'et' | 'et-EE' | 'eu' | 'eu-ES' | 'fa' | 'fa-IR' | 'fb-LT' | 'ff' | 'fi' | 'fi-FI' | 'fo' | 'fo-FO' | 'fr' | 'fr-CA' | 'fr-FR' | 'fr-BE' | 'fr-CH' | 'fy-NL' | 'ga' | 'ga-IE' | 'gd' | 'gl' | 'gl-ES' | 'gn-PY' | 'gu-IN' | 'gv' | 'gx-GR' | 'he' | 'he-IL' | 'hi' | 'hi-IN' | 'hr' | 'hr-HR' | 'hsb' | 'ht' | 'hu' | 'hu-HU' | 'hy' | 'hy-AM' | 'id' | 'id-ID' | 'is' | 'is-IS' | 'it' | 'it-IT' | 'ja' | 'ja-JP' | 'jv-ID' | 'ka-GE' | 'kk-KZ' | 'km' | 'kl' | 'km-KH' | 'kab' | 'kn' | 'kn-IN' | 'ko' | 'ko-KR' | 'ku-TR' | 'kw' | 'la' | 'la-VA' | 'lb' | 'li-NL' | 'lt' | 'lt-LT' | 'lv' | 'lv-LV' | 'mai' | 'mg-MG' | 'mk' | 'mk-MK' | 'ml' | 'ml-IN' | 'mn-MN' | 'mr' | 'mr-IN' | 'ms' | 'ms-MY' | 'mt' | 'mt-MT' | 'my' | 'no' | 'nb' | 'nb-NO' | 'ne' | 'ne-NP' | 'nl' | 'nl-BE' | 'nl-NL' | 'nn-NO' | 'oc' | 'or-IN' | 'pa' | 'pa-IN' | 'pl' | 'pl-PL' | 'ps-AF' | 'pt' | 'pt-BR' | 'pt-PT' | 'qu-PE' | 'rm-CH' | 'ro' | 'ro-RO' | 'ru' | 'ru-RU' | 'sa-IN' | 'se-NO' | 'sh' | 'si-LK' | 'sk' | 'sk-SK' | 'sl' | 'sl-SI' | 'so-SO' | 'sq' | 'sq-AL' | 'sr' | 'sr-RS' | 'su' | 'sv' | 'sv-SE' | 'sw' | 'sw-KE' | 'ta' | 'ta-IN' | 'te' | 'te-IN' | 'tg' | 'tg-TJ' | 'th' | 'th-TH' | 'fil' | 'tlh' | 'tr' | 'tr-TR' | 'tt-RU' | 'uk' | 'uk-UA' | 'ur' | 'ur-PK' | 'uz' | 'uz-UZ' | 'vi' | 'vi-VN' | 'xh-ZA' | 'yi' | 'yi-DE' | 'zh' | 'zh-Hans' | 'zh-Hant' | 'zh-CN' | 'zh-HK' | 'zh-SG' | 'zh-TW' | 'zu-ZA';
                     avatarId?: string | null;
-                    avatarDecorations?: ({
-                        id: string;
-                        angle?: number | null;
-                        flipH?: boolean | null;
-                        offsetX?: number | null;
-                        offsetY?: number | null;
-                    })[];
                     bannerId?: string | null;
                     fields?: {
                         name: string;
@@ -12020,7 +11761,6 @@ export type operations = {
                     untilId?: string;
                     sinceDate?: number;
                     untilDate?: number;
-                    allowPartial?: boolean;
                     includeMyRenotes?: boolean;
                     includeRenotedMyNotes?: boolean;
                     includeLocalRenotes?: boolean;
@@ -12073,7 +11813,6 @@ export type operations = {
                     limit?: number;
                     sinceId?: string;
                     untilId?: string;
-                    allowPartial?: boolean;
                     sinceDate?: number;
                     untilDate?: number;
                 };
@@ -12687,7 +12426,6 @@ export type operations = {
                     untilId?: string;
                     sinceDate?: number;
                     untilDate?: number;
-                    allowPartial?: boolean;
                     includeMyRenotes?: boolean;
                     includeRenotedMyNotes?: boolean;
                     includeLocalRenotes?: boolean;
@@ -12701,54 +12439,6 @@ export type operations = {
                 content: {
                     'application/json': components['schemas']['Note'][];
                 };
-            };
-            400: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            401: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            403: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            418: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-            500: {
-                content: {
-                    'application/json': components['schemas']['Error'];
-                };
-            };
-        };
-    };
-    notes___translate: {
-        requestBody: {
-            content: {
-                'application/json': {
-                    noteId: string;
-                    targetLang: string;
-                };
-            };
-        };
-        responses: {
-            200: {
-                content: {
-                    'application/json': {
-                        sourceLang: string;
-                        text: string;
-                    };
-                };
-            };
-            204: {
-                content: never;
             };
             400: {
                 content: {
@@ -12831,7 +12521,6 @@ export type operations = {
                     untilId?: string;
                     sinceDate?: number;
                     untilDate?: number;
-                    allowPartial?: boolean;
                     includeMyRenotes?: boolean;
                     includeRenotedMyNotes?: boolean;
                     includeLocalRenotes?: boolean;
@@ -14546,7 +14235,6 @@ export type operations = {
                     untilId?: string;
                     sinceDate?: number;
                     untilDate?: number;
-                    allowPartial?: boolean;
                     withFiles?: boolean;
                 };
             };

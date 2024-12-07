@@ -6,10 +6,6 @@ declare module '../api.js' {
         request<E extends 'admin/accounts/create', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'admin/accounts/delete', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'admin/accounts/find-by-email', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'admin/avatar-decorations/create', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'admin/avatar-decorations/delete', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'admin/avatar-decorations/list', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'admin/avatar-decorations/update', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'admin/delete-all-files-of-a-user', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'admin/unset-user-avatar', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'admin/unset-user-banner', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
@@ -153,7 +149,6 @@ declare module '../api.js' {
         request<E extends 'following/requests/cancel', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'following/requests/list', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'following/requests/reject', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'get-avatar-decorations', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'hashtags/list', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'hashtags/search', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'hashtags/show', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
@@ -245,7 +240,6 @@ declare module '../api.js' {
         request<E extends 'notes/thread-muting/create', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'notes/thread-muting/delete', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'notes/timeline', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
-        request<E extends 'notes/translate', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'notes/unrenote', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'notes/user-list-timeline', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
         request<E extends 'notifications/create', P extends Endpoints[E]['req']>(endpoint: E, params: P, credential?: string | null): Promise<SwitchCaseResponseType<E, P>>;
